@@ -1,0 +1,44 @@
+services:
+  nginx:
+    build:
+      context: ./nginx
+    image: nginx
+    container_name: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    restart: always
+    networks:
+      sectorrent:
+        ipv4_address: 10.5.1.2
+    #profiles:
+    #  - donotstart
+
+  web:
+    build:
+      context: ./www
+      args:
+        RUNTIME: ${RUNTIME}
+    image: sectorrent_com_www
+    container_name: www
+    environment:
+      NODE_ENV: production
+    restart: always
+    volumes:
+      - ./env:/env
+    networks:
+      sectorrent:
+        ipv4_address: 10.5.1.3
+    #profiles:
+    #  - donotstart
+
+networks:
+  sectorrent:
+    #external: true
+    driver: bridge
+    attachable: true
+    ipam:
+     config:
+       - subnet: 10.5.1.0/24

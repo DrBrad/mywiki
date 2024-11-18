@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title><%= config.general.project_name %></title>
+        <link rel='shortcut icon' href='/favicon.svg'>
+        <link rel='stylesheet' href='/styles/mobile/main.css'>
+<%
+    if(typeof styles !== 'undefined'){
+        for(const style of styles){
+%>
+        <link rel='stylesheet' href='/styles/mobile/<%= style %>.css'>
+<%
+        }
+    }
+%>
+        <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0'>
+
+        <!meta name='title' content='' />
+        <!meta name='description' content='' />
+        <!meta name='keywords' content='' />
+
+        <!meta name='description' content=''>
+
+        <!meta name='twitter:title' content='' />
+        <!meta name='twitter:description' content='' />
+        <!meta name='twitter:image' content='' />
+        <!meta name='twitter:card' content='summary'>
+
+        <!meta property='og:title' content='' />
+        <!meta property='og:description' content='' />
+        <!meta property='og:type' content='website' />
+        <!meta property='og:url' content='https://' />
+        <!meta property='og:image' content='' />
+        <!meta name='theme-color' content='#'>
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li class='home'>
+                        <svg viewBox='0 0 24 24'>
+                            <path d='M4 6 20 6 M4 12 20 12 M4 18 20 18' stroke='#000000' stroke-width='2' stroke-linecap='round' />
+                        </svg>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
